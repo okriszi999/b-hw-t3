@@ -6,7 +6,6 @@ import {
 } from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { env } from "@/env.mjs";
 import { prisma } from "@/server/db";
 
 /**
@@ -57,8 +56,9 @@ export const authOptions: NextAuthOptions = {
         },
         password: { label: "Password", type: "password" },
       },
-      authorize: async (credentials, request) => {
+      authorize: (credentials) => {
         console.log(credentials);
+
         return null;
       },
     }),
